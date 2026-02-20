@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Budget Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Event Budget Risk Predictor</h1>
+
+        <p>Enter event financial values:</p>
+
+        <input type="number" id="planned" placeholder="Planned Budget">
+        <input type="number" id="actual" placeholder="Actual Expense">
+        <input type="number" id="sponsorship" placeholder="Sponsorship Amount">
+
+        <button onclick="predictBudget()">Predict Risk</button>
+
+        <h3 id="result"></h3>
+
+        <br><br>
+
+        <a href="/dashboard">
+            <button>Go to Dashboard</button>
+        </a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

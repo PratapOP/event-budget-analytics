@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Budget Analytics - ML Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Event Budget Risk Predictor</h1>
+
+    <div class="card">
+
+        <p style="margin-bottom:15px;color:#94a3b8;">
+            Enter financial values to predict budget risk using ML.
+        </p>
+
+        <input type="number" id="planned" placeholder="Planned Budget">
+        <input type="number" id="actual" placeholder="Actual Expense">
+        <input type="number" id="sponsorship" placeholder="Sponsorship Amount">
+
+        <button onclick="predictBudget()">Predict Risk</button>
+
+        <h3 id="result"></h3>
+
+    </div>
+
+    <div class="card">
+        <p style="margin-bottom:10px;color:#94a3b8;">
+            View complete finance analytics dashboard.
+        </p>
+
+        <a href="/dashboard">
+            <button>Go to Dashboard</button>
+        </a>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
