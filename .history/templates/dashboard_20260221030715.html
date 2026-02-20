@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Budget Analytics Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Event Budget Analytics Dashboard</h1>
+
+    <!-- KPI SECTION -->
+    <div class="kpi-grid">
+
+        <div class="kpi-card">
+            <div class="kpi-title">Total Planned Budget</div>
+            <div class="kpi-value">₹ {{ planned }}</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Total Actual Spend</div>
+            <div class="kpi-value">₹ {{ actual }}</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Total Sponsorship</div>
+            <div class="kpi-value">₹ {{ sponsorship }}</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Variance (Actual - Planned)</div>
+            <div class="kpi-value">₹ {{ variance }}</div>
+        </div>
+
+    </div>
+
+    <!-- RISK ANALYSIS PANEL -->
+    <div class="card" style="margin-top:25px;">
+
+        <h3 style="color:#38bdf8; margin-bottom:10px;">
+            Budget Risk Analysis
+        </h3>
+
+        <h2 style="color: {{ risk_color }};">
+            {{ risk_status }}
+        </h2>
+
+        <p style="color:#94a3b8; margin-top:10px; line-height:1.6;">
+            {{ insight }}
+        </p>
+
+    </div>
+
+    <!-- CHART SECTION -->
+    <div class="card" style="margin-top:25px;">
+
+        <h3 style="color:#38bdf8; margin-bottom:15px;">
+            Budget vs Actual Analysis
+        </h3>
+
+        <canvas id="budgetChart"></canvas>
+
+    </div>
+
+    <!-- INSIGHT CARD -->
+    <div class="card" style="margin-top:25px;">
+
+        <h3 style="color:#38bdf8;margin-bottom:10px;">
+            Financial Insight
+        </h3>
+
+        <p style="color:#94a3b8; line-height:1.6;">
+            This dashboard summarizes overall event financial performance.
+            Variance shows whether spending exceeded planned budget.
+            Positive variance indicates overspending risk.
+        </p>
+
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="card">
+        <a href="/">
+            <button>Back to Predictor</button>
+        </a>
+    </div>
+
+</div>
+
+<!-- CHART JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+</html>

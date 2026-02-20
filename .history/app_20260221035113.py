@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import pickle
-from flask import send_file
-from reportlab.pdfgen import canvas
-import io
 
 app = Flask(__name__)
 
@@ -98,67 +95,7 @@ def dashboard():
         month_values=month_values,
         executive_insight=executive_insight
     )
-# ===============================
-# DOWNLOAD FINANCE REPORT (PDF)
-# ===============================
-@app.route("/download-report")
-def download_report():
 
-    df = pd.read_csv("data/event_data.csv")
-
-    total_planned = df["Planned"].sum()
-    total_actual = df["Actual"].sum()
-    total_sponsorship = df["Sponsorship"].sum()
-    variance = total_actual - total_planned
-
-    category_summary = df.groupby("Category")["Actual"].sum()
-    top_category = category_summary.idxmax()
-
-    # Create PDF in memory
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer)
-
-    # Title
-    p.setFont("Helvetica-Bold", 16)
-    p.drawString(50, 800, "Event Budget Analytics Report")
-
-    p.setFont("Helvetica", 12)
-
-    y = 760
-    p.drawString(50, y, f"Total Planned Budget: ₹ {total_planned}")
-    y -= 25
-    p.drawString(50, y, f"Total Actual Spend: ₹ {total_actual}")
-    y -= 25
-    p.drawString(50, y, f"Total Sponsorship: ₹ {total_sponsorship}")
-    y -= 25
-    p.drawString(50, y, f"Variance: ₹ {variance}")
-    y -= 35
-
-    if variance > 0:
-        risk = "HIGH RISK"
-    else:
-        risk = "SAFE"
-
-    p.drawString(50, y, f"Risk Status: {risk}")
-    y -= 25
-
-    p.drawString(
-        50,
-        y,
-        f"Executive Insight: Highest spending category is {top_category}"
-    )
-
-    p.showPage()
-    p.save()
-
-    buffer.seek(0)
-
-    return send_file(
-        buffer,
-        as_attachment=True,
-        download_name="finance_report.pdf",
-        mimetype="application/pdf"
-    )
 
 # ===============================
 # ML PREDICTION API

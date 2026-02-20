@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Budget Analytics Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Event Budget Analytics Dashboard</h1>
+
+    <!-- KPI SECTION -->
+    <div class="kpi-grid">
+
+        <div class="kpi-card">
+            <div class="kpi-title">Total Planned Budget</div>
+            <div class="kpi-value">₹ {{ planned }}</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Total Actual Spend</div>
+            <div class="kpi-value">₹ {{ actual }}</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Total Sponsorship</div>
+            <div class="kpi-value">₹ {{ sponsorship }}</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-title">Variance</div>
+            <div class="kpi-value">₹ {{ variance }}</div>
+        </div>
+
+    </div>
+
+    <!-- RISK PANEL -->
+    <div class="card" style="margin-top:25px;">
+        <h3 style="color:#38bdf8;">Budget Risk Analysis</h3>
+        <h2 style="color: {{ risk_color }};">{{ risk_status }}</h2>
+        <p style="color:#94a3b8;">{{ insight }}</p>
+    </div>
+
+    <!-- EXECUTIVE INSIGHT -->
+    <div class="card" style="margin-top:25px;">
+        <h3 style="color:#38bdf8;">Executive Insight</h3>
+        <p style="color:#94a3b8;">{{ executive_insight }}</p>
+    </div>
+
+    <!-- BAR CHART -->
+    <div class="card" style="margin-top:25px;">
+        <h3 style="color:#38bdf8;">Budget vs Actual</h3>
+        <canvas id="budgetChart"></canvas>
+    </div>
+
+    <!-- PIE CHART -->
+    <div class="card" style="margin-top:25px;">
+        <h3 style="color:#38bdf8;">Expense Distribution by Category</h3>
+        <canvas id="categoryChart"></canvas>
+    </div>
+
+    <!-- TREND CHART -->
+    <div class="card" style="margin-top:25px;">
+        <h3 style="color:#38bdf8;">Monthly Spend Trend</h3>
+        <canvas id="trendChart"></canvas>
+    </div>
+
+    <div class="card">
+    <a href="/download-report">
+        <button>Download Finance Report (PDF)</button>
+    </a>
+</div>
+
+    <div class="card">
+        <a href="/"><button>Back to Predictor</button></a>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<script>
+const categoryLabels = {{ category_labels | tojson }};
+const categoryValues = {{ category_values | tojson }};
+const monthLabels = {{ month_labels | tojson }};
+const monthValues = {{ month_values | tojson }};
+</script>
+
+</body>
+</html>
