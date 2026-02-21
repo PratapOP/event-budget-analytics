@@ -193,14 +193,3 @@ button {
     font-size: 0.9rem;
     color: #94a3b8;
 }
-
-/* ===== CHART POLISH ===== */
-
-canvas {
-    margin-top: 10px;
-}
-
-.card h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-}

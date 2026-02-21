@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Finance Entry</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Add Event Finance Entry</h1>
+
+    <div class="card">
+
+        <form method="POST">
+
+            <input type="date" name="date" required>
+            <input type="text" name="category" placeholder="Category" required>
+            <input type="number" name="planned" placeholder="Planned Budget" required>
+            <input type="number" name="actual" placeholder="Actual Spend" required>
+            <input type="number" name="sponsorship" placeholder="Sponsorship" required>
+
+            <button type="submit">Add Entry</button>
+
+        </form>
+
+        {% if success %}
+            <p style="color:#4ade80; margin-top:15px;">
+                {{ success }}
+            </p>
+        {% endif %}
+
+    </div>
+
+    <div class="card">
+        <a href="/dashboard">
+            <button>Back to Dashboard</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

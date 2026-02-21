@@ -40,7 +40,7 @@
             <div class="kpi-title">Variance</div>
             <div class="kpi-value"
             style="color:{% if variance > 0 %}#f87171{% else %}#4ade80{% endif %};">
-            ₹ {{ variance }}
+        ₹ {{ variance }}
         </div>
         </div>
 
@@ -84,29 +84,20 @@
     </div>
 
     <div class="card">
-        <a href="/add-entry">
-            <button>Add New Finance Entry</button>
-        </a>
-    </div>
-
-    <div class="card">
         <a href="/"><button>Back to Predictor</button></a>
     </div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
-<!-- Backend data FIRST -->
 <script>
 const categoryLabels = {{ category_labels | tojson }};
 const categoryValues = {{ category_values | tojson }};
 const monthLabels = {{ month_labels | tojson }};
 const monthValues = {{ month_values | tojson }};
 </script>
-
-<!-- Dashboard JS AFTER data -->
-<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
 </body>
 </html>

@@ -1,0 +1,19 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "Scikit",
+    "scikit",
+    "venv",
+    "Flask",
+    "Pandas",
+    "Chart",
+    "KPI",
+    "ML"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/venv/**",
+    "**/.git/**"
+  ]
+}

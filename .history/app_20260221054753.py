@@ -196,11 +196,13 @@ def add_entry():
 
         df = pd.read_csv("data/event_data.csv")
 
-        df = pd.concat([df, pd.DataFrame([new_data])],ignore_index=True)
+        df = pd.concat([df, pd.DataFrame([new_data])],
+                       ignore_index=True)
 
         df.to_csv("data/event_data.csv", index=False)
 
-        return render_template("add_entry.html", success="Entry Added Successfully!")
+        return render_template("add_entry.html",
+                               success="Entry Added Successfully!")
 
     return render_template("add_entry.html")
 # ===============================

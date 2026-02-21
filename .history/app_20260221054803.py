@@ -196,7 +196,8 @@ def add_entry():
 
         df = pd.read_csv("data/event_data.csv")
 
-        df = pd.concat([df, pd.DataFrame([new_data])],ignore_index=True)
+        df = pd.concat([df, pd.DataFrame([new_data])],
+                       ignore_index=True)
 
         df.to_csv("data/event_data.csv", index=False)
 
