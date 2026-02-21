@@ -100,7 +100,7 @@ event-budget-analytics/
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/PratapOP/event-budget-analytics
 cd event-budget-analytics
 ```
 
